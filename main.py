@@ -2,7 +2,6 @@ from kafka_producer import send_data
 from mongodb_consumer import save_data
 from spark_consumer import process_data
 
-
 import threading
 
 if __name__ == '__main__':
@@ -16,3 +15,4 @@ if __name__ == '__main__':
 
     spark_thread.join()
     mongodb_thread.join()
+

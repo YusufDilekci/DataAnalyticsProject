@@ -9,17 +9,17 @@ def send_data():
     csv_file_path = 'datasets/sarcasm.csv'
     df = pd.read_csv(csv_file_path)
 
-    time.sleep(40)
 
+    time.sleep(15)
+    
     producer = KafkaProducer(
         bootstrap_servers='localhost:9092',
         value_serializer=lambda x: json.dumps(x).encode('utf-8')  
     )
 
-
     for index, row in df.iterrows():
         data = row.to_dict()  
-        producer.send('my_topic', value=data) 
+        producer.send('my_topic', value=data)
 
     
     producer.flush()  
